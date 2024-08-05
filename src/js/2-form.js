@@ -39,11 +39,13 @@ const onFeedbackFormSubmit = event => {
 
   if (email === '' || message === '') {
     alert('Fill please all fields');
-    return;
+  } else {
+    console.log(formData);
+
+    localStorage.removeItem('feedback-form-state');
+    formData = { email: '', message: '' };
+    document.querySelector('.feedback-form').reset();
   }
-  event.target.reset();
-  localStorage.removeItem('feedback-form-state');
-  console.log(formData);
 };
 
 feedBackFormEl.addEventListener('input', onFormFieldChange);
